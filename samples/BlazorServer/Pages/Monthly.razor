@@ -28,7 +28,8 @@
 			     Draggable="@draggable" 
 				 DragStart="DragStart" 
 				 DropTask="DropTask"
-				 HighlightToday="true" />
+				 HighlightToday="true"
+				 SpecialDays="@specialDays" />
 </CalendarContainer>
 
 <br />
@@ -41,6 +42,7 @@
 	private string fakeConsole = "";
 	private BlazorCalendar.PriorityLabel PriorityDisplay = PriorityLabel.Code;
 	private bool draggable = true;
+	private SpecialDay[] specialDays;
 
 	protected override void OnInitialized()
 	{
@@ -59,6 +61,14 @@
 			new Tasks { ID = 7, DateStart = today.AddDays(32), DateEnd = today.AddDays(32), Code = "BLAZOR", Color = "#FFC3FF", Caption = "Blazor Dev" } ,
 			new Tasks { ID = 8, DateStart = today.AddDays(45).AddHours(8), DateEnd = today.AddDays(45).AddHours(9), Code = "MEETING", Color = "#2DD7D7", Comment="Julien's test" },
 			new Tasks { ID = 9, DateStart = today.AddDays(-8), DateEnd = today.AddDays(-7), Code = "MEET⭐", Color = "#0d6efd",Caption = "MTG:France" }
+		};
+
+		// Example holidays with custom background colors
+		specialDays = new SpecialDay[]
+		{
+			new SpecialDay { Date = today.AddDays(7), BackgroundColor = "#FFE4E1", Name = "Holiday 1" },
+			new SpecialDay { Date = today.AddDays(14), BackgroundColor = "#FFD700", Name = "Holiday 2" },
+			new SpecialDay { Date = today.AddDays(25), BackgroundColor = "#90EE90", Name = "Holiday 3" }
 		};
 	}
 

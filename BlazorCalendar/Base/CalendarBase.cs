@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using BlazorCalendar.Models;
 
 namespace BlazorCalendar;
 
@@ -52,8 +53,25 @@ public abstract class CalendarBase : ComponentBase
     [Parameter]
     public string DisabledDayColor { get; set; } = "#DBE7F8";
 
+    /// <summary>
+    /// List of special days with custom background colors (e.g., holidays)
+    /// </summary>
+    [Parameter]
+    public SpecialDay[] SpecialDays { get; set; }
+
     public string GetBackground(DateTime day)
     {
+        // Check if this day is a special day
+        if (SpecialDays != null)
+        {
+            var specialDay = SpecialDays.FirstOrDefault(sd => sd.Date.Date == day.Date);
+            
+            if (specialDay != null)
+            {
+                return $"background:{specialDay.BackgroundColor}";
+            }
+        }
+
         int d = (int)day.DayOfWeek;
 
         if (d == 6)
