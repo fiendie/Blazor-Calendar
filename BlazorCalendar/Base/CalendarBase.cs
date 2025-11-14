@@ -85,4 +85,15 @@ public abstract class CalendarBase : ComponentBase
 
         return $"background:{WeekDaysColor}";
     }
+
+    public string? GetSpecialDayName(DateTime day)
+    {
+        if (SpecialDays != null)
+        {
+            var specialDay = SpecialDays.FirstOrDefault(sd => sd.Date.Date == day.Date);
+            return specialDay?.Name;
+        }
+        
+        return null;
+    }
 }

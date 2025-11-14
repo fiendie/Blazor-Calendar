@@ -131,3 +131,18 @@
     align-self: end;
     margin-left: 10px;
 }
+
+.monthly-special-day-name {
+    position: absolute;
+    bottom: 2px;
+    left: 8px;
+    font-size: 1.0em;
+    font-weight: 500;
+    color: #444;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 8px);
+}
+

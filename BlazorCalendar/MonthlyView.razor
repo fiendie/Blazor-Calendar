@@ -47,12 +47,17 @@
                 State = StateCase.InMonth; // Start filling days
                 var dayClick = DayCounter;
                 CSSbackground = GetBackground(dayClick);
+                var specialDayName = GetSpecialDayName(dayClick);
                 <div class="fade-in monthly-day noselect" 
                      style="@CSSbackground"
                      ondragover="event.preventDefault();"
                      @onclick="e => ClickDayInternal(e, dayClick)" 
                      @ondrop="() => HandleDayOnDrop(dayClick)">
                      @(DayCounter.Day.ToString())
+                     @if (!string.IsNullOrEmpty(specialDayName))
+                     {
+                         <span class="monthly-special-day-name">@specialDayName</span>
+                     }
                 </div>
                 DayCounter = DayCounter.AddDays(1);
                 OffsetCell = i;
@@ -79,6 +84,7 @@
             {
                 DateTime _dayClick = DayCounter;
                 CSSbackground = GetBackground(_dayClick);
+                var specialDayName = GetSpecialDayName(_dayClick);
                 if (HighlightToday)
                 {
                     CSSToday = DayCounter == Today ? "monthly-today" : null;
@@ -90,6 +96,10 @@
                      @onclick="e => ClickDayInternal(e, _dayClick)" 
                      @ondrop="() => HandleDayOnDrop(_dayClick)">
                      @(DayCounter.Day.ToString())
+                     @if (!string.IsNullOrEmpty(specialDayName))
+                     {
+                         <span class="monthly-special-day-name">@specialDayName</span>
+                     }
                 </div>
                 DayCounter = DayCounter.AddDays(1);
             }
