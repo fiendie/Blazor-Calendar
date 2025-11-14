@@ -15,8 +15,8 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write  # Required to create releases
+      packages: write  # Required to publish to GitHub Packages
       
     steps:
       - name: Checkout code
