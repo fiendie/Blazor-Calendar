@@ -4,18 +4,20 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Description>Yearly, monthly and weekly calendar Blazor Component. For use with .NET 9.0 or higher Blazor applications</Description>
+		<Description>Yearly, monthly and weekly calendar Blazor Component with Special Days support. For use with .NET 9.0 or higher Blazor applications</Description>
 		<Copyright>Copyright 2024</Copyright>
-		<PackageProjectUrl>https://github.com/tossnet/Blazor-Calendar</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/fiendie/Blazor-Calendar</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
-		<RepositoryUrl>https://github.com/tossnet/Blazor-Calendar</RepositoryUrl>
+		<PackageReadmeFile>PACKAGE_README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/fiendie/Blazor-Calendar</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>blazor, calendar, schedule, component</PackageTags>
-		<PackageReleaseNotes>https://github.com/tossnet/Blazor-Calendar#release-notes</PackageReleaseNotes>
+		<PackageTags>blazor, calendar, schedule, component, holidays, special-days</PackageTags>
+		<PackageReleaseNotes>Added SpecialDays feature for highlighting holidays and custom dates. See https://github.com/fiendie/Blazor-Calendar#release-notes</PackageReleaseNotes>
 		<Version>2.8.0</Version>
-		<Authors>Christophe Peugnet</Authors>
+		<Authors>Andreas Tacke (fork), Christophe Peugnet (original)</Authors>
 		<DebugType>embedded</DebugType>
+		<PackageId>BlazorCalendar.Special</PackageId>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -32,6 +34,7 @@
 
 	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="\" />
+		<None Include="PACKAGE_README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>
