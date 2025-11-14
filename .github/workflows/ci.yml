@@ -1,5 +1,11 @@
 name: 'Publish application'
-on: push
+on: 
+  push:
+    branches:
+      - main
+      - master
+    tags-ignore:
+      - '**'  # Don't run on tag pushes (NuGet workflow handles those)
 
 jobs:
   build:
@@ -23,7 +29,7 @@ jobs:
    
       - name: Dotnet Publish
         run: 
-            dotnet publish  --configuration Release -f net9.0
+            dotnet publish samples/BlazorWebAssembly/BlazorWebAssembly.csproj --configuration Release -f net9.0
 
       - name: Change base-tag in index.html to repo name
         run: sed -i 's/<base href="\/" \/>/<base href="\/${{ env.REPO_NAME }}\/" \/>/g' $GITHUB_WORKSPACE/$PUBLISH_FOLDER/index.html
